@@ -1,6 +1,7 @@
 import React from 'react'
+import './Coin.css';
 
-const Coin = ({ name, image, symbol, price, volume}) => {
+const Coin = ({ name, image, symbol, price, volume, priceChange, marketCap}) => {
     return (
         <div className='coin-container'>
             <div className='coin-row'>
@@ -13,6 +14,13 @@ const Coin = ({ name, image, symbol, price, volume}) => {
                     <p className="coin-price">${price}</p>
                     <p className="coin-volume">${volume.toLocaleString()}</p>
                 </div>
+                {priceChange < 0 ? (
+                    <p className="coint-percent red">{priceChange.toFixed(2)}%</p>
+                ) : (<p className="coint-percent green">{priceChange.toFixed(2)}%</p>) 
+            }
+            <p className='coin-marketcap'>
+                Mkt Cap: ${marketCap.toLocaleString()}
+            </p>
             </div>  
         </div>
     );
